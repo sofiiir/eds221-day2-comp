@@ -86,3 +86,44 @@ class(fruit)
 
 fruit[,2]
 fruit[2,1] <- "pineapple"
+
+# Select multiple elements
+x <- 1:10
+x[c(3, 1, 5)]
+x[c(1, 1, 1)]
+x[c(1.2, 5.4, 7.2)]
+
+#exclude elements with negative integers
+x[-10]
+x[-c(2, 4, 6, 8, 10)]
+x[c(-1, 2)]
+
+# logical vectors (TRUE = KEEP & FALSE = THROW AWAY)
+x[c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE)]
+
+x[x > 3]
+
+x[0]
+
+# Subsetting and assigning multiple values
+x <- 1:5
+x[c(1, 2)] <- 2:3
+
+x[-1] <- 4:1
+
+#Subset rows in data frames based on conditions (logical subsetting)
+mtcars[mtcars$gear == 5, ]
+
+mtcars[mtcars$gear == 5 & mtcars$cyl == 4, ]
+
+#shorthad version using the subset function 
+subset(mtcars, gear == 5)
+subset(mtcars, gear == 5 & cyl == 4)
+
+# Remove columns
+df <- data.frame(x = 1:3,
+                 y = 3:1,
+                 z = c("a", "b", "c"))
+df$z <- NULL
+df <- df[c("x", "y")]
+df[setdiff(names(df), "z")]
